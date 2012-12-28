@@ -15,6 +15,7 @@ class User
 
   after_destroy :destroy_watchers
   before_save :ensure_authentication_token
+  before_save :set_ldap_email
 
   validates_presence_of :name
   validates_uniqueness_of :github_login, :allow_nil => true
@@ -57,5 +58,9 @@ class User
     def destroy_watchers
       watchers.each(&:destroy)
     end
+
+  def set_ldap_email
+    self.email = Devise::LdapAdapter.get_ldap_param(self.username, 'mail')
+  end
 end
 
