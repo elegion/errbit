@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'mongoid', '~> 2.4.10'
 gem 'mongoid_rails_migrations'
-gem 'devise', '~> 1.5.3'
+gem 'devise', '~> 1.5.4'
 gem 'haml'
 gem 'htmlentities', "~> 4.3.0"
 gem 'rack-ssl', :require => 'rack/ssl'   # force SSL
@@ -53,6 +53,8 @@ gem 'xmpp4r'
 gem 'hoi'
 # Pushover (iOS Push notifications)
 gem 'rushover'
+# Hubot
+gem 'httparty'
 
 # Authentication
 # ---------------------------------------
@@ -106,7 +108,7 @@ group :assets do
   gem 'therubyracer', :platform => :ruby  # C Ruby (MRI) or Rubinius, but NOT Windows
   gem 'uglifier',     '>= 1.0.3'
   gem 'underscore-rails'
+  gem 'turbo-sprockets-rails3'
 end
 
-gem 'turbo-sprockets-rails3'
 gem 'devise_ldap_authenticatable'
