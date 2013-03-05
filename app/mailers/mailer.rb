@@ -3,6 +3,9 @@
 require Rails.root.join('config/routes.rb')
 
 class Mailer < ActionMailer::Base
+  helper ApplicationHelper
+  helper BacktraceLineHelper
+
   default :from => Errbit::Config.email_from
 
   def err_notification(notice)

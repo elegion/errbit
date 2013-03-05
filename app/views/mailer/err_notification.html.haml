@@ -28,14 +28,21 @@
               %p.monospace
                 = @notice.where
               - @notice.in_app_backtrace_lines.each do |line|
-                %p.backtrace= line
-                %br
+                %p.backtrace
+                  = link_to_source_file(line) do
+                    = line.to_s
+              %br
               %p.heading URL:
               %p.monospace
                 - if @notice.request['url'].present?
                   = link_to @notice.request['url'], @notice.request['url']
-              %p.heading BACKTRACE:
-              - @notice.backtrace_lines.each do |line|
-                %p.backtrace= line
+              %p.heading BROWSER:
+              %p.monospace
+                = user_agent_graph(@notice.problem)
               %br
-
+              %p.heading FULL BACKTRACE:
+              - @notice.backtrace_lines.each do |line|
+                %p.backtrace
+                  = link_to_source_file(line) do
+                    = line.to_s
+              %br
