@@ -11,7 +11,8 @@ module BacktraceLineHelper
       link_to_hosted_javascript(line, text)
     else
       link_to_repo_source_file(line, text) ||
-      link_to_issue_tracker_file(line, text)
+      link_to_issue_tracker_file(line, text) ||
+      text || line.file_name
     end
   end
 
